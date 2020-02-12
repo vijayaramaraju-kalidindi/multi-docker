@@ -1,4 +1,4 @@
-language: ruby
+language: generic
 sudo: required
 services:
   - docker
@@ -10,7 +10,7 @@ before_install:
   - docker build -t vijay/react-test -f ./client/Dockerfile.dev ./client
 
 scripts:
-  - docker run -e CI=true vijay/docker-react npm run test -- --coverage
+  - docker run -e CI=true vijay/docker-react npm test -- --coverage
 
 after_success:
   - docker build -t vijay/multi-client ./client
