@@ -13,10 +13,10 @@ scripts:
   - docker run -e CI=true vijay/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t vijay/multi-client ./client
-  - docker build -t vijay/multi-nginx ./nginx
-  - docker build -t vijay/multi-server ./server
-  - docker build -t vijay/multi-worker ./worker
+  - docker build -t aviator429/vijay:multi-client ./client
+  - docker build -t aviator429/vijay:multi-nginx ./nginx
+  - docker build -t aviator429/vijay:multi-server ./server
+  - docker build -t aviator429/vijay:multi-worker ./worker
 
 # Login to docker hub
 
@@ -24,8 +24,8 @@ after_success:
 
 # Push Images to docker hub
   
-  - docker push vijay/multi-client
-  - docker push vijay/multi-nginx
-  - docker push vijay/multi-server
-  - docker push vijay/multi-worker
+  - docker push aviator429/vijay:multi-client
+  - docker push aviator429/vijay:multi-nginx
+  - docker push aviator429/vijay:multi-server
+  - docker push aviator429/vijay:multi-worker
 
