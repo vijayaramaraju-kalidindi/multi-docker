@@ -28,4 +28,17 @@ after_success:
   - docker push aviator429/vijay:multi-nginx
   - docker push aviator429/vijay:multi-server
   - docker push aviator429/vijay:multi-worker
+# Deploy section
 
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-413915511261"
+  bucket_path: "multi-docker"
+  on:
+   branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"

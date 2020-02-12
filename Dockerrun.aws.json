@@ -1,0 +1,40 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+   {
+      "name": "client",
+      "image": "aviator429/vijay:multi-client",
+      "hostname": "client",
+      "essential": false
+   },
+   {
+      "name": "server",
+      "image": "aviator429/vijay:multi-server",
+      "hostname": "api",
+      "essential": false
+   },
+   {
+      "name": "worker",
+      "image": "aviator429/vijay:multi-worker",
+      "hostname": "worker",
+      "essential": false
+   },
+   {
+      "name": "nginx",
+      "image": "aviator429/vijay:multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+       {
+          "hostPort": 80,
+          "containerPort": 80
+        
+       }
+
+     ],
+     "links": ["client", "server"]
+   }
+
+ ]
+
+}
